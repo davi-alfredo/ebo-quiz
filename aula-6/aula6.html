@@ -18,6 +18,8 @@
         .header, .card { border: 1px solid #dceaf5; border-radius: 18px; background: rgba(255,255,255,.98); box-shadow: 0 12px 30px rgba(43,94,132,.09); }
         .header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 16px; padding: 22px; color: #102a43; background: linear-gradient(115deg, rgba(255,255,255,.99), rgba(235,247,255,.98)); border-color: #cfe7f8; }
         .logo-wrap { display: grid; width: 76px; height: 76px; flex: 0 0 76px; place-items: center; padding: 4px; border-radius: 50%; background: linear-gradient(135deg, #06b6d4, #2563eb, #4338ca); }
+        .logo-link { color: inherit; text-decoration: none; }
+        .logo-link:focus-visible { outline: 3px solid #38bdf8; outline-offset: 4px; }
         .logo { width: 100%; height: 100%; border-radius: 50%; object-fit: contain; background: #020617; }
         .header-copy { display: flex; align-items: center; gap: 16px; min-width: 0; }
         .header-text { min-width: 0; }
@@ -103,7 +105,9 @@
 <body>
     <main class="page">
         <header class="header">
-            <div class="logo-wrap"><img class="logo" src="../images/ebo.png" alt="Logo da Escola Bíblica Online"></div>
+            <a class="logo-wrap logo-link" href="../index.html" aria-label="Voltar para a página inicial">
+                <img class="logo" src="../images/ebo.png" alt="Logo da Escola Bíblica Online">
+            </a>
             <div class="header-copy">
                 <div class="header-text">
                     <p class="eyebrow">Escola Bíblica Online</p>
@@ -310,11 +314,16 @@
             restart.addEventListener("click", () => {
                 restartQuiz();
             });
+            const home = document.createElement("a");
+            home.className = "button";
+            home.href = "../index.html";
+            home.textContent = "Voltar para a Home";
             const restartWrapper = document.createElement("div");
             restartWrapper.className = "navigation";
+            restartWrapper.style.flexWrap = "wrap";
             restartWrapper.style.justifyContent = "center";
             restartWrapper.style.marginTop = "22px";
-            restartWrapper.append(restart);
+            restartWrapper.append(restart, home);
             results.append(header, metrics, reportHeading, review, restartWrapper);
         }
 
