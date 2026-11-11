@@ -27,6 +27,10 @@
         .eyebrow { margin: 0 0 5px; color: #0876b9; font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
         h1 { margin: 0; font-size: clamp(1.3rem, 4vw, 1.8rem); }
         .reference { margin: 8px 0 0; color: #526b80; }
+        .header-actions { display: flex; flex: 0 0 auto; align-items: center; gap: 8px; }
+        .home-link { padding: 10px 15px; border: 1px solid #b8dcee; border-radius: 10px; color: #0876b9; background: #f0f9ff; font-weight: 750; text-decoration: none; white-space: nowrap; }
+        .home-link:hover { border-color: #69bde8; background: #e0f2fe; }
+        .home-link:focus-visible { outline: 3px solid #38bdf8; outline-offset: 3px; }
         .restart-button { flex: 0 0 auto; padding: 10px 15px; border: 1px solid #b8dcee; border-radius: 10px; color: #0876b9; background: #f0f9ff; font-weight: 750; }
         .restart-button:hover { border-color: #69bde8; background: #e0f2fe; }
         .dashboard { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 0 0 16px; }
@@ -94,7 +98,7 @@
         .confetti-piece { position: absolute; top: -16px; left: var(--left); width: var(--size); height: calc(var(--size) * 1.55); border-radius: 2px; background: var(--color); opacity: 0; animation: confetti-fall var(--duration) linear var(--delay) forwards; }
         @keyframes confetti-fall { 0% { opacity: 0; transform: translate3d(0, -4vh, 0) rotate(0); } 10% { opacity: 1; } 100% { opacity: 0; transform: translate3d(var(--drift), 110vh, 0) rotate(720deg); } }
         @media (max-width: 600px) { .metrics { grid-template-columns: 1fr; } .dashboard { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-        @media (max-width: 500px) { body { padding: 14px 10px; } .header { align-items: flex-start; padding: 16px; } .header-copy { align-items: flex-start; gap: 10px; } .logo-wrap { width: 52px; height: 52px; flex-basis: 52px; } .restart-button { padding: 9px 10px; font-size: .8rem; } .stat-card { padding: 12px 8px; } .navigation .button { flex: 1; } .option { padding: 11px; } }
+        @media (max-width: 500px) { body { padding: 14px 10px; } .header { align-items: flex-start; padding: 16px; } .header-copy { align-items: flex-start; gap: 10px; } .logo-wrap { width: 52px; height: 52px; flex-basis: 52px; } .header-actions { flex-direction: column; align-items: stretch; } .home-link, .restart-button { padding: 9px 10px; font-size: .8rem; } .stat-card { padding: 12px 8px; } .navigation .button { flex: 1; } .option { padding: 11px; } }
         @media (prefers-reduced-motion: reduce) { .progress-fill { transition: none; } }
     </style>
 </head>
@@ -111,7 +115,10 @@
                     <p class="reference">A parede caiu e um novo povo nasceu • Efésios 2:11-22</p>
                 </div>
             </div>
-            <button class="restart-button" id="restart-header" type="button">↻ Reiniciar</button>
+            <div class="header-actions">
+                <a class="home-link" href="../index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a>
+                <button class="restart-button" id="restart-header" type="button">↻ Reiniciar</button>
+            </div>
         </header>
         <div class="dashboard">
             <div class="stat-card">
